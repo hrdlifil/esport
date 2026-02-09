@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="cs">
+
+<head th:replace="~{fragments :: head('Registrace úspěšná — EsportNabor')}"></head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav th:replace="~{fragments :: navbar}"></nav>
+
+    <!-- ═══════════════════ SUCCESS SECTION ═══════════════════ -->
+    <section class="success-section">
+        <div class="container">
+            <div class="success-card">
+                <div class="success-icon-wrapper">
+                    <span class="success-icon">✓</span>
+                </div>
+                <h1 class="success-title">Jste zaregistrováni!</h1>
+                <p class="success-message"
+                    th:text="${successMessage != null ? successMessage : 'Děkujeme za přihlášení. Brzy vás budeme kontaktovat s dalšími podrobnostmi o experimentu.'}">
+                    Děkujeme za přihlášení. Brzy vás budeme kontaktovat s dalšími podrobnostmi o experimentu.
+                </p>
+
+                <div class="success-next-steps">
+                    <h3>Co bude následovat?</h3>
+                    <ol>
+                        <li>Obdržíte potvrzovací e-mail s podrobnostmi o experimentu.</li>
+                        <li>Domluvíme datum a čas, který vám bude vyhovovat.</li>
+                        <li>V den experimentu se dostavte na místo a užijte si sezení!</li>
+                    </ol>
+                </div>
+
+                <a href="/" class="btn btn-outline">
+                    ← Zpět na hlavní stránku
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer th:replace="~{fragments :: footer}"></footer>
+
+    <script th:src="@{/js/app.js}"></script>
+</body>
+
+</html>

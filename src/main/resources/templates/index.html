@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="cs">
+
+<head th:replace="~{fragments :: head('EsportNabor — Registrace do experimentu')}"></head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav th:replace="~{fragments :: navbar}"></nav>
+
+    <!-- ═══════════════════ HERO SECTION ═══════════════════ -->
+    <section class="hero" id="top">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge">🔬 Výzkumný projekt</span>
+            <h1 class="hero-title">Výzkum esportového<br /><span class="gradient-text">výkonu</span></h1>
+            <p class="hero-subtitle">
+                Hledáme účastníky do grantového výzkumného projektu zaměřeného
+                na esportový výkon a kognitivní schopnosti.
+            </p>
+            <a href="#register" class="btn btn-primary btn-lg">
+                Zaregistrovat se
+                <span class="btn-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ ABOUT SECTION ═══════════════════ -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">O studii</span>
+                <h2 class="section-title">Co vás čeká</h2>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">🧠</div>
+                    <h3>Kognitivní testování</h3>
+                    <p>Absolvujete sérii kognitivních a reakčních testů zaměřených na měření schopností souvisejících s
+                        výkonem.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">⌚</div>
+                    <h3>Nositelná zařízení</h3>
+                    <p>Během sezení můžete nosit chytrý prsten, který sleduje fyziologická data, jako je srdeční tep a
+                        teplota kůže.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">🎯</div>
+                    <h3>Herní sezení</h3>
+                    <p>Odehrajete krátké kompetitivní esportové sezení, během kterého budeme sbírat výkonnostní metriky
+                        a biometrická data.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">📋</div>
+                    <h3>Dotazník</h3>
+                    <p>Krátký dotazník o vašich herních návycích, životním stylu a zdraví uzavře celý experiment.</p>
+                </div>
+            </div>
+
+            <div class="details-strip">
+                <div class="detail-item">
+                    <span class="detail-label">Doba trvání</span>
+                    <span class="detail-value">~60 min</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Místo</span>
+                    <span class="detail-value">Prezenčně (podrobnosti e-mailem)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Podmínky</span>
+                    <span class="detail-value">18+ let</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Odměna</span>
+                    <span class="detail-value">Podrobnosti po registraci</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ REGISTRATION SECTION ═══════════════════ -->
+    <section class="register-section" id="register">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Přihlášení</span>
+                <h2 class="section-title">Zaregistrujte se jako účastník</h2>
+                <p class="section-desc">Vyplňte formulář níže a my vás budeme kontaktovat s dalšími podrobnostmi.</p>
+            </div>
+
+            <div class="form-card">
+                <form th:action="@{/register}" th:object="${proband}" method="post" id="registrationForm"
+                    novalidate="novalidate">
+
+                    <!-- Global email-duplicate error -->
+                    <div th:if="${emailError}" class="alert alert-error" role="alert">
+                        <span class="alert-icon">⚠️</span>
+                        <span th:text="${emailError}">Chyba</span>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- First Name -->
+                        <div class="form-group">
+                            <label for="firstName">Jméno <span class="required">*</span></label>
+                            <input type="text" id="firstName" th:field="*{firstName}" class="form-control"
+                                placeholder="Jan" th:errorclass="is-invalid" required="required" />
+                            <p class="field-error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                                Chyba</p>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="form-group">
+                            <label for="lastName">Příjmení <span class="required">*</span></label>
+                            <input type="text" id="lastName" th:field="*{lastName}" class="form-control"
+                                placeholder="Novák" th:errorclass="is-invalid" required="required" />
+                            <p class="field-error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+                                Chyba</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">E-mail <span class="required">*</span></label>
+                            <input type="email" id="email" th:field="*{email}" class="form-control"
+                                placeholder="jan.novak@email.cz" th:errorclass="is-invalid" required="required" />
+                            <p class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Chyba</p>
+                        </div>
+                        <!-- Phone -->
+                        <div class="form-group">
+                            <label for="phoneNumber">Telefonní číslo <span class="required">*</span></label>
+                            <input type="tel" id="phoneNumber" th:field="*{phoneNumber}" class="form-control"
+                                placeholder="+420 123 456 789" th:errorclass="is-invalid" required="required" />
+                            <p class="field-error" th:if="${#fields.hasErrors('phoneNumber')}"
+                                th:errors="*{phoneNumber}">Chyba</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Date of Birth -->
+                        <div class="form-group">
+                            <label for="dateOfBirth">Datum narození <span class="required">*</span></label>
+                            <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" class="form-control"
+                                th:errorclass="is-invalid" required="required" />
+                            <p class="field-error" th:if="${#fields.hasErrors('dateOfBirth')}"
+                                th:errors="*{dateOfBirth}">Chyba</p>
+                        </div>
+                        <!-- Ring Size -->
+                        <div class="form-group">
+                            <label for="ringSize">Velikost prstenu <span class="optional">(nepovinné)</span></label>
+                            <input type="number" id="ringSize" th:field="*{ringSize}" class="form-control"
+                                placeholder="např. 9" min="1" max="20" />
+                            <p class="field-hint">Pro nositelný chytrý prsten používaný během experimentu.</p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span class="btn-text">Odeslat registraci</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer th:replace="~{fragments :: footer}"></footer>
+
+    <script th:src="@{/js/app.js}"></script>
+</body>
+
+</html>
