@@ -55,6 +55,11 @@ public class ProbandController {
         return "redirect:/success";
     }
 
+    @GetMapping("/register")
+    public String registerRedirect() {
+        return "redirect:/";
+    }
+
     @GetMapping("/success")
     public String success() {
         return "success";
