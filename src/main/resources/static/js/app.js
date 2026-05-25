@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
             valid = false;
         } else {
             const age = getAge(new Date(dob.value));
-            if (age < 18) {
-                showError(dob, 'Musíte být starší 18 let.');
+            if (age < 16) {
+                showError(dob, 'Musíte mít alespoň 16 let.');
                 valid = false;
             }
         }
