@@ -437,55 +437,6 @@ a:hover { color: #66d9ff; }
     line-height: 1.7;
 }
 
-.pitch-value-banner {
-    background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,194,255,0.05), rgba(255,255,255,0.02));
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 2.5rem 2rem;
-    text-align: center;
-    margin-bottom: 5rem;
-    border-radius: var(--radius);
-}
-
-.value-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.value-amount {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 12px var(--accent-glow));
-}
-
-.value-text {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.capacity-warning {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    color: #fbbf24;
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
 .pitch-cta {
     text-align: center;
     max-width: 600px;
@@ -519,8 +470,6 @@ a:hover { color: #66d9ff; }
 
 @media (max-width: 900px) {
     .pitch-content { grid-template-columns: 1fr; gap: 2rem; }
-    .pitch-value-banner { padding: 2rem 1rem; }
-    .value-amount { font-size: 2.8rem; }
     .pitch-quote-wrapper::before, .pitch-quote-wrapper::after { display: none; }
 }
 
@@ -831,6 +780,5 @@ a:hover { color: #66d9ff; }
     .hero-title { font-size: 1.7rem; }
     .hero-subtitle { font-size: 0.98rem; }
     .navbar-inner { padding: 0 1rem; }
-    .brand-text { display: none; }
     .info-grid { grid-template-columns: 1fr; }
 }
